@@ -1,11 +1,19 @@
-export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
+import PropTypes from 'prop-types';
+import { Button } from './styled.js';
+
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <ul>
-      {options.map(el => (
-        <button type="button" key={el} onClick={onLeaveFeedback}>
-          {el}
-        </button>
+    <div>
+      {options.map(option => (
+        <Button type="button" key={option} onClick={onLeaveFeedback}>
+          {option}
+        </Button>
       ))}
-    </ul>
+    </div>
   );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired
 };
